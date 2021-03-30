@@ -1,4 +1,5 @@
-﻿using MongoDB.Bson;
+﻿using CarGalleryApp.CustomAttributes;
+using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 using System;
 using System.Collections.Generic;
@@ -17,6 +18,27 @@ namespace CarGalleryApp.Models
         [BsonElement("Brand")]
         [Required]
         public string Brand { get; set; }
+
+        [BsonElement("Model")]
+        [Required]
+        public string Model { get; set; }
+
+        [BsonElement("Year")]
+        [Required]
+         [YearRange]
+        public string Year { get; set; }
+
+        [BsonElement("Price")]
+        [Display(Name ="Price($)")]
+        [DisplayFormat(DataFormatString ="{0:#,0}")]
+        public decimal Price { get; set; }
+
+        [BsonElement("IamageUrl")]
+        [Display(Name ="Photo")]
+        [DataType(DataType.ImageUrl)]
+        [Required]
+        public string ImageUrl { get; set; }
+
 
 
     }
